@@ -1,0 +1,19 @@
+<!-- Key:
+    - image_path
+    - options 
+-->
+
+<!DOCTYPE html>
+<html>
+<body>
+    <img src="{{ image_path }}" alt="image">
+    <form action="#" method="post">
+        <select name="option">
+        {% for option in options %}
+            <option value="{{option}}">{{ option }}</option>
+        {% endfor %}
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

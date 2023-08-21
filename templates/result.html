@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+{% if option == predicted_label %}
+
+    <h1>Correct!</h1>
+
+{% else %}
+
+    <h1>Incorrect!</h1>
+
+{% endif %}
+
+{{ predicted_label }} was predicted, but you chose {{ option }}.
+{{score / count * 100 | round(2) }}% success rate.
+
+<a href="/">Try again</a>
+
+</body>
+</html>
