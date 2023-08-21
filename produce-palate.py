@@ -6,10 +6,14 @@ import pickle
 import json
 import random
 from typing import Final
+from scripts.utils import (
+    IMAGE_PATH,
+    LABEL_DICT_PATH,
+    MODEL_PATH
+)
 
 
-# Define folder paths
-IMAGE_FOLDER: Final = "static"
+# Constants
 NUM_OPTIONS: Final = 4
 
 
@@ -43,11 +47,11 @@ def get_dependencies():
     """
 
     # Load the label_dict from the JSON file
-    with open("label_dict.json", "r") as f:
+    with open(LABEL_DICT_PATH, "r") as f:
         label_dict = json.load(f)
 
     # Load the model
-    with open("best_model.pkl", "rb") as f:
+    with open(MODEL_PATH, "rb") as f:
         best_model = pickle.load(f)
     
     return label_dict, best_model
@@ -58,7 +62,7 @@ def get_predicted_label(filename: str, best_model, label_dict):
     Gets the predicted label for the image using the best model and the label 
     dictionary.
     """
-    image_path = os.path.join(IMAGE_FOLDER, filename)
+    image_path = os.path.join(IMAGE_PATH, filename)
     img = cv2.imread(image_path)
 
     # Preprocess the image
@@ -75,7 +79,7 @@ def main():
     label_dict, best_model = get_dependencies()
 
     # Get images and the number of images
-    files = os.listdir(IMAGE_FOLDER)
+    files = os.listdir(IMAGE_PATH)
     num_images = len(files)
 
     # Count the score

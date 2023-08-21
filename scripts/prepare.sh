@@ -9,7 +9,7 @@ folder_path="$base_path/$folder_name"
 count=1
 
 # Change directory to the target folder
-cd "$folder_path"
+cd ../"$folder_path"
 
 # Run mogrify
 mogrify *

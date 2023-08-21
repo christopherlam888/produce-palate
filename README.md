@@ -23,3 +23,6 @@ Children's game powered by an AI image classfier for various fruits and vegetabl
 [![GNU GPLv3 Image](https://www.gnu.org/graphics/gplv3-127x51.png)](https://www.gnu.org/licenses/gpl-3.0.en.html)  
 
 This project is licensed under the GNU General Public License v3.0.
+
+## Notes
+- All scripts must be run from the base directory
