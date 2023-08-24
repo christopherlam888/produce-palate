@@ -1,20 +1,31 @@
-<!DOCTYPE html>
-<html>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Result{% endblock %}
+
+{% block content %}
+
 {% if option == predicted_label %}
 
     <h1>Correct!</h1>
+    This is in fact a {{ option }} <br>
 
 {% else %}
 
     <h1>Incorrect!</h1>
+    {{ predicted_label }} was predicted, but you chose {{ option }}. <br>
 
 {% endif %}
 
-{{ predicted_label }} was predicted, but you chose {{ option }}. <br>
 {{score}} out of {{count}} success rate.
 
-<a href="/">Try again</a>
+{% if count < num_files %}
 
-</body>
-</html>
+<a href="/play">Try again</a>
+
+{% else %}
+
+<a href="/done">Complete</a>
+
+{% endif %}
+
+{% endblock %}

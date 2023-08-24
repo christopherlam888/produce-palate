@@ -15,7 +15,7 @@ TEST_DIRECTORY_PATH: Final = os.path.join("data", "test")
 VALIDATE_DIRECTORY_PATH: Final = os.path.join("data", "validate")
 LABEL_DICT_PATH: Final = os.path.join("scripts", "label_dict.json")
 MODEL_PATH: Final = os.path.join("scripts", "best_model.pkl")
-IMAGE_PATH: Final = "static"
+IMAGE_PATH: Final = os.path.join("static", "images")
 
 
 def preprocess_image(img):
