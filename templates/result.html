@@ -11,8 +11,8 @@
 
 {% endif %}
 
-{{ predicted_label }} was predicted, but you chose {{ option }}.
-{{score / count * 100 | round(2) }}% success rate.
+{{ predicted_label }} was predicted, but you chose {{ option }}. <br>
+{{score}} out of {{count}} success rate.
 
 <a href="/">Try again</a>
 

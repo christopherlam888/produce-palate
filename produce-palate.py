@@ -1,15 +1,11 @@
 # This is the main code for Produce Palate
 import os
-import cv2
-import numpy as np
-import pickle
-import json
-import random
 from typing import Final
 from scripts.utils import (
     IMAGE_PATH,
     get_dependencies,
     get_predicted_label,
+    generate_options,
 )
 
 
@@ -31,15 +27,7 @@ def main():
     for filename in files:
         predicted_label = get_predicted_label(filename, best_model, label_dict)
 
-        # Generate four random labels excluding the predicted label
-        random_labels = random.sample(
-            [label for label in label_dict.values() if label != predicted_label], 
-            NUM_OPTIONS
-        )
-
-        # Add the predicted label to the list of random labels
-        options = random_labels + [predicted_label]
-        random.shuffle(options)
+        options = generate_options(predicted_label, label_dict)
 
         # Print the options
         print(f"{filename}: Which fruit is this?")

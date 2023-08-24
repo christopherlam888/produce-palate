@@ -1,9 +1,13 @@
 import os
-from typing import Final
+from typing import (
+    Final,
+    List
+)
 import cv2
 import numpy as np
 import pickle
 import json
+import random
 
 
 # Define the paths
@@ -54,7 +58,7 @@ def get_dependencies():
     return label_dict, best_model
 
 
-def get_predicted_label(filename: str, best_model, label_dict):
+def get_predicted_label(filename: str, best_model, label_dict) -> str:
     """
     Gets the predicted label for the image using the best model and the label 
     dictionary.
@@ -68,5 +72,19 @@ def get_predicted_label(filename: str, best_model, label_dict):
 
     # Use the model for prediction
     prediction = best_model.predict(test_data)[0]
-    print(prediction)
     return label_dict[str(prediction)]
+
+
+def generate_options(predicted_label: str, label_dict: dict, *, num_options=4) -> List[str]:
+    """
+    Generates the options for the user to choose from.
+    """
+    output = random.sample(
+        [label for label in label_dict.values() if label != predicted_label], 
+        num_options
+    )
+
+    # Add the predicted label to the list of random labels
+    output.append(predicted_label)
+    random.shuffle(output)
+    return output
