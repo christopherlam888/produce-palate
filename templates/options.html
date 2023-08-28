@@ -2,18 +2,20 @@
     - image_path
     - options 
 -->
+{% extends "base.html" %}
 
-<!DOCTYPE html>
-<html>
-<body>
-    <img src="{{ image_path }}" alt="image">
+{% block title %}Options{% endblock %}
+
+{% block content %}
+
+    <img src="{{ image_path }}" alt="image" class="item">
+    <p> What is this? </p>
     <form action="#" method="post">
         <select name="option">
         {% for option in options %}
             <option value="{{option}}">{{ option }}</option>
         {% endfor %}
-        </select>
+        </select> <br>
         <input type="submit" value="Submit">
     </form>
-</body>
-</html>
+{% endblock %}

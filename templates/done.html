@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 
-{% block title %}Done{% endblock %}
+{% block title %}Congratulations{% endblock %}
 
 {% block content %}
 
-    <h1>Done</h1>
+    <h1>Congratulations</h1>
 
-    You have completed the quiz with a final result of {{score}} out of {{count}}. <br>
+   <p>You have completed the game. </p>
+   <p class="large">🥳</p>
+   <p>Your final was result: <strong>{{score}}</strong> out of <strong>{{count}}</strong>.</p> 
 
-    <p>Click <a href="/play">here</a> to play again.</p>
+ <a href="/play" class="play">Click to play again</a> 
 
 {% endblock %}

@@ -5,27 +5,23 @@
 {% block content %}
 
 {% if option == predicted_label %}
-
-    <h1>Correct!</h1>
-    This is in fact a {{ option }} <br>
-
+    <h1 class="success-message">Correct!</h1>
+    <p class="success-message">
+        This is in fact a{% if option[0] in "AEIOU" %}n{% endif %} <strong> {{ option.lower() }}</strong>.
+    </p> 
 {% else %}
-
-    <h1>Incorrect!</h1>
-    {{ predicted_label }} was predicted, but you chose {{ option }}. <br>
-
+    <h1 class="failure-message">Incorrect!</h1>
+    <p class="failure-message">
+        This is a{% if predicted_label[0] in "AEIOU" %}n{% endif %} <strong> {{ predicted_label.lower() }}</strong>, but you chose <strong> {{ option.lower() }}</strong>
+    </p>
 {% endif %}
 
-{{score}} out of {{count}} success rate.
+<p class="score">{{score}} out of {{count}} success rate.</p>
 
 {% if count < num_files %}
-
-<a href="/play">Try again</a>
-
+    <a href="/play" class="result-link">Try again</a>
 {% else %}
-
-<a href="/done">Complete</a>
-
+    <a href="/done" class="result-link">Complete</a>
 {% endif %}
 
 {% endblock %}
