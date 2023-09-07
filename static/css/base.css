@@ -1,0 +1,134 @@
+/* Reset some default styles */
+body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set a playful background color */
+body {
+    background-color: #FDF5E6;
+}
+
+/* Style the content container */
+#content {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Style the heading */
+h1 {
+    font-size: 48px;
+    color: #FF6347;
+    margin-bottom: 20px;
+}
+
+/* Style the paragraph text */
+p {
+    font-size: 24px;
+    color: #2E8B57;
+    margin-bottom: 20px;
+}
+
+/* Style the main content area */
+#content .item-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Style the fruit and vegetable items */
+.item {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    margin: auto;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #87CEEB;
+    color: #FFFFFF;
+}
+
+/* Individual item styles */
+/* IDK why this is here */
+.apple { background-color: #FF4500; }
+.banana { background-color: #FFD700; }
+.carrot { background-color: #FFA500; }
+.grapes { background-color: #9400D3; }
+.orange { background-color: #FFA500; }
+.strawberry { background-color: #FF1493; }
+.tomato { background-color: #FF6347; }
+.watermelon { background-color: #228B22; }
+
+/* Style the dropdown menu */
+form select {
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background-color: #3497be;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+}
+
+/* Style the submit button */
+form input[type="submit"] {
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    background-color: #FF6347;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.play {
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    background-color: #FF6347;
+    color: #FFFFFF;
+    margin-top: 20px;
+}
+
+/* Style the success message */
+.success-message {
+    font-size: 28px;
+    color: #228B22;
+    margin-bottom: 20px;
+}
+
+/* Style the failure message */
+.failure-message {
+    font-size: 28px;
+    color: #FF6347;
+    margin-bottom: 20px;
+}
+
+/* Style the link for trying again or completing */
+.result-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #87CEEB;
+    color: #FFFFFF;
+    border-radius: 8px;
+    font-size: 20px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.result-link:hover {
+    background-color: #FF6347; /* Change color on hover */
+}
+
+/* Make a specific class of text bold */
+.bold-text {
+    font-weight: bold;
+}
+
+.large {
+    font-size: 80px;
+}

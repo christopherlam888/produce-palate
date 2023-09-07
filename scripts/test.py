@@ -5,19 +5,22 @@ import cv2
 import numpy as np
 import pickle
 import json
+from utils import (
+    TEST_DIRECTORY_PATH,
+    LABEL_DICT_PATH,
+    MODEL_PATH
+)
 
-# Define folder paths
-test_folder = "data/test"
 
 # Load the label_dict from the JSON file
-with open("label_dict.json", "r") as f:
+with open(LABEL_DICT_PATH, "r") as f:
     label_dict = json.load(f)
 
 # Load test images and labels
 test_images = []
 test_labels = []
-for label_folder in os.listdir(test_folder):
-    label_folder_path = os.path.join(test_folder, label_folder)
+for label_folder in os.listdir(TEST_DIRECTORY_PATH):
+    label_folder_path = os.path.join(TEST_DIRECTORY_PATH, label_folder)
     label_idx = next(key for key, value in label_dict.items() if value == label_folder)
     for filename in os.listdir(label_folder_path):
         img_path = os.path.join(label_folder_path, filename)
@@ -51,7 +54,7 @@ test_data = np.array(test_data)
 test_labels = np.array(test_labels, dtype=int)
 
 # Load the model
-with open("best_model.pkl", "rb") as f:
+with open(MODEL_PATH, "rb") as f:
     best_model = pickle.load(f)
 
 # Use the model for prediction

@@ -1,0 +1,21 @@
+<!-- Key:
+    - image_path
+    - options 
+-->
+{% extends "base.html" %}
+
+{% block title %}Options{% endblock %}
+
+{% block content %}
+
+    <img src="{{ image_path }}" alt="image" class="item">
+    <p> What is this? </p>
+    <form action="#" method="post">
+        <select name="option">
+        {% for option in options %}
+            <option value="{{option}}">{{ option }}</option>
+        {% endfor %}
+        </select> <br>
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}

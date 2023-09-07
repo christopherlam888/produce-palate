@@ -9,18 +9,21 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.model_selection import GridSearchCV
 import json
+from utils import (
+    TEST_DIRECTORY_PATH,
+    VALIDATE_DIRECTORY_PATH,
+    LABEL_DICT_PATH,
+    MODEL_PATH,
+)
 
-# Define folder paths
-train_folder = "data/train"
-validate_folder = "data/validate"
 
 # Load training images and labels
 train_images = []
 train_labels = []
 label_dict = {}
 label_counter = 0
-for label_folder in os.listdir(train_folder):
-    label_folder_path = os.path.join(train_folder, label_folder)
+for label_folder in os.listdir(VALIDATE_DIRECTORY_PATH):
+    label_folder_path = os.path.join(VALIDATE_DIRECTORY_PATH, label_folder)
     label_dict[label_counter] = label_folder
     for filename in os.listdir(label_folder_path):
         img_path = os.path.join(label_folder_path, filename)
@@ -130,8 +133,8 @@ svm_model.fit(train_data, train_labels)
 # Load validate images and labels
 validate_images = []
 validate_labels = []
-for label_folder in os.listdir(validate_folder):
-    label_folder_path = os.path.join(validate_folder, label_folder)
+for label_folder in os.listdir(TEST_DIRECTORY_PATH):
+    label_folder_path = os.path.join(TEST_DIRECTORY_PATH, label_folder)
     label_idx = next(key for key, value in label_dict.items() if value == label_folder)
     for filename in os.listdir(label_folder_path):
         img_path = os.path.join(label_folder_path, filename)
@@ -191,18 +194,18 @@ for i in range(len(validate_labels)):
 
 # Save the model with the highest accuracy
 if knn_accuracy >= max(rf_accuracy, svm_accuracy):
-    with open("best_model.pkl", "wb") as f:
+    with open(MODEL_PATH, "wb") as f:
         pickle.dump(knn_model, f)
     print("KNN model saved as the best model.")
 elif rf_accuracy >= max(knn_accuracy, svm_accuracy):
-    with open("best_model.pkl", "wb") as f:
+    with open(MODEL_PATH, "wb") as f:
         pickle.dump(rf_model, f)
     print("Random Forest model saved as the best model.")
 else:
-    with open("best_model.pkl", "wb") as f:
+    with open(MODEL_PATH, "wb") as f:
         pickle.dump(svm_model, f)
     print("SVM model saved as the best model.")
 
 # Save the dict
-with open("label_dict.json", "w") as f:
+with open(LABEL_DICT_PATH, "w") as f:
     json.dump(label_dict, f)
