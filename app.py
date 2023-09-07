@@ -61,7 +61,7 @@ def init_session():
     session["initialized"] = True
 
 
-def get_next_file() -> str:
+def get_file() -> str:
     """
     Gets the next file in the list of files.
     """
@@ -89,6 +89,9 @@ def play():
 
         session["count"] += 1
 
+        session["current_score"] = session["score"]
+        session["current_count"] = session["count"]
+
         return render_template(
             "result.html",
             predicted_label=predicted_label,
@@ -105,7 +108,7 @@ def play():
         init_session()
         
         label_dict, best_model = get_dependencies()
-        filename = get_next_file()
+        filename = get_file()
         predicted_label = get_predicted_label(filename, best_model, label_dict)
         session["predicted_label"] = predicted_label
 
@@ -119,11 +122,12 @@ def play():
 @app.route("/done")
 def done():
     # User accessed the page directly without playing the game
-    if "initialized" not in session:
+    if "initialized" not in session or "current_score" not in session \
+            or "current_count" not in session:
         return redirect(url_for("index"))
     
-    score = session["score"]
-    count = session["count"]
+    score = session["current_score"]
+    count = session["current_count"]
     session["initialized"] = False
     init_session()
 
