@@ -14,7 +14,7 @@ Children's game powered by an AI image classfier for various fruits and vegetabl
 - Load your own images in the "images" folder to play an interactive quiz to identify your fruits and vegetables
 
 ## Features To Implement
-- Python application GUI
+- Improved landing page UI
 - More classes of household fruits and vegetables
 - More training data
 - Improved image preprocessing
@@ -26,3 +26,4 @@ This project is licensed under the GNU General Public License v3.0.
 
 ## Notes
 - All scripts must be run from the base directory
+- Run `python app.py` from the base directory and the website should appear on `localhost:5000`
